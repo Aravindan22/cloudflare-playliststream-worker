@@ -97,7 +97,9 @@ import styles from "./page.module.css";
 function test() {
   fetch("/api/test")
     .then((res) => res.text())
-    .then((res) => console.log(res))
+    .then((res) => {
+      console.log(res);
+    })
     .catch(() => console.log("Error loading"));
 }
 
