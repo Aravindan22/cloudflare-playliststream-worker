@@ -1,5 +1,6 @@
-import Image from "next/image";
+"use client";
 import styles from "./page.module.css";
+import { useEffect } from "react";
 
 // export default function Home() {
 //   return (
@@ -102,7 +103,7 @@ function test() {
 }
 
 export default function Home() {
-  test();
+  useEffect(test, []);
 
   return <h1>Hello World</h1>;
 }
