@@ -10,3 +10,8 @@ export default {
     return new Response(result?.value || "Not found");
   },
 };
+// app/api/test/route.js
+export function GET() {
+  const result = env.DB.prepare("SELECT value FROM SampleTable").first();
+  return new Response(result?.value || "Not found");
+}
