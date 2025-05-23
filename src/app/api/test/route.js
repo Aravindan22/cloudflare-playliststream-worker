@@ -1,20 +1,11 @@
-export const config = {
-  runtime: "edge", // Required to access `env`
-};
+import withEnv from "@/lib/withEnv";
+const db = process.env.DATABASE;
+export const GET = withEnv(async (req, { env }) => {
+  const result = await db.prepare("SELECT * FROM SampleTable").all();
+  console.log(result);
 
-export default {
-  async fetch(request, env) {
-    const { pathname } = new URL(request.url);
-
-    if (pathname === "/api/query") {
-      const result = env.DB.prepare("SELECT value FROM SampleTable").first();
-      console.log(result);
-      return new Response(JSON.stringify(result));
-    }
-
-    return new Response("Not found", { status: 404 });
-  },
-};
+  return new Response(JSON.stringify(result));
+});
 
 // // app/api/test/route.js
 // export function GET() {
