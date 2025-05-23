@@ -96,10 +96,13 @@ import { useEffect } from "react";
 // }
 
 function test() {
-  fetch("/api/test")
-    .then((res) => res.text())
-    .then((res) => console.log(res))
-    .catch(() => console.log("Error loading"));
+  // fetch("/api/test")
+  //   .then((res) => res.text())
+  //   .then((res) => console.log(res))
+  //   .catch(() => console.log("Error loading"));
+  const db = process.env.DB;
+  const result = db.prepare("SELECT * FROM SampleTable").all();
+  console.log(result);
 }
 
 export default function Home() {
